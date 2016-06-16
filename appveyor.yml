@@ -9,7 +9,7 @@ install:
 
 build_script:
   - cd %APPVEYOR_BUILD_FOLDER%
-  - npm test
+  - .\bin\npm test
 
 test: off
 
