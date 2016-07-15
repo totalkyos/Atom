@@ -6,7 +6,7 @@ echo ^>^> Version of Node
 node --version
 
 echo ^>^> Downloading bundled Node
-node script/download-node.js
+node .\script\download-node.js
 
 echo ""
 for /f "delims=" %%i in ('.\bin\node.exe -v') do set bundledVersion=%%i
