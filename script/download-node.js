@@ -1,3 +1,7 @@
+process.on('uncaughtException', function (err) {
+  console.log('Caught exception: ' + err.toString())
+})
+
 console.log('Running download-node...')
 
 var fs = require('fs');

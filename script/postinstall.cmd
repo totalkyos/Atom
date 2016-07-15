@@ -4,6 +4,7 @@ setlocal EnableExtensions
 
 echo ^>^> Downloading bundled Node
 node .\script\download-node.js
+echo ^>^> Downloaded Node version
 
 echo ""
 for /f "delims=" %%i in ('.\bin\node.exe -v') do set bundledVersion=%%i
