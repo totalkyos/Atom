@@ -9,10 +9,12 @@ var tar = require('tar');
 var temp = require('temp');
 
 var request = require('request');
-
+console.log('--- A ---');
 var getInstallNodeVersion = require('./bundled-node-version')
+console.log('--- B ---');
 
 temp.track();
+console.log('--- C ---');
 
 var identifyArch = function() {
   var arch = process.arch === 'ia32' ? 'x86' : process.arch;
@@ -27,6 +29,7 @@ var downloadFileToLocation = function(url, filename, callback) {
   stream.on('end', callback);
   stream.on('error', callback);
   request.get(url).pipe(stream);
+  console.log('--- F ---');
 };
 
 var downloadTarballAndExtract = function(url, location, callback) {
@@ -72,6 +75,7 @@ var downloadNode = function(version, done) {
       arch = process.arch === 'x64' ? 'x64/' : '';
     downloadURL = "http://nodejs.org/dist/" + version + "/win-" + arch + "node.exe";
     filename = path.join('bin', "node.exe");
+    console.log('--- E ---');
   } else {
     arch = identifyArch();
     downloadURL = "http://nodejs.org/dist/" + version + "/node-" + version + "-" + process.platform + "-" + arch + ".tar.gz";
@@ -103,7 +107,9 @@ var downloadNode = function(version, done) {
 };
 
 var versionToInstall = fs.readFileSync(path.resolve(__dirname, '..', 'BUNDLED_NODE_VERSION'), 'utf8').trim()
+console.log('--- D ---');
 downloadNode(versionToInstall, function(error) {
+  console.log('--- G ---');
   if (error != null) {
     console.error('Failed to download node', error);
     return process.exit(1);
