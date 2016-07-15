@@ -70,11 +70,11 @@ var downloadNode = function(version, done) {
     else
       arch = process.arch === 'x64' ? 'x64/' : '';
     downloadURL = "http://nodejs.org/dist/" + version + "/win-" + arch + "node.exe";
-    filename = path.join('bin', "node.exe");
+    filename = path.join(__dirname, '..', 'bin', "node.exe");
   } else {
     arch = identifyArch();
     downloadURL = "http://nodejs.org/dist/" + version + "/node-" + version + "-" + process.platform + "-" + arch + ".tar.gz";
-    filename = path.join('bin', "node");
+    filename = path.join(__dirname, '..', 'bin', "node");
   }
 
   var downloadFile = function() {
