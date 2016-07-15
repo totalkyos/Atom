@@ -1,3 +1,5 @@
+console.log('Running download-node...')
+
 var fs = require('fs');
 var mv = require('mv');
 var zlib = require('zlib');
